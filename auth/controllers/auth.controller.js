@@ -1,7 +1,25 @@
+// @ts-nocheck
 const asyncHandler = require('../middlewares/asyncHandler');
+const sendJsonResponse = require('../utiles/sendJsonResponse');
+const User = require('../models/User');
 
 exports.login = asyncHandler(async (req, res, next) => {
-  res.send('hello');
+  const { username, password } = req.body;
+
+  const user = await User.findOne({ username });
+
+  if (!user) {
+    throw new Error('Invalid values');
+  }
+
+  const isMatched = await user.comparePassword(password);
+
+  if (!isMatched) {
+    throw new Error('Invalid values');
+  }
+
+  // res.send('logged in');
+  sendJsonResponse(user, 200, res);
 });
 
 exports.adminProfile = asyncHandler(async (req, res, next) => {
@@ -13,6 +31,12 @@ exports.logoutSession = asyncHandler(async (req, res, next) => {
     token => token.token !== req.token
   );
   await req.user.save();
+  // res.clearCookie('token');
+  res.cookie('token', 'none', {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true,
+  });
+
   res
     .status(200)
     .json({ success: true, msg: `user ${req.user.username} is logged out` });

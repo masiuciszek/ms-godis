@@ -18,3 +18,9 @@ exports.getMe = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({ success: true, data: loggedInUser });
 });
+
+exports.getAdmin = asyncHandler(async (req, res, next) => {
+  const loggedInUser = await User.findById(req.user._id);
+
+  res.status(200).json({ success: true, data: loggedInUser });
+});

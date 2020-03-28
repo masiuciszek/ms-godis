@@ -11,6 +11,6 @@ const auth = require('../middlewares/authHandler');
 router.route('/login').post(login);
 
 router.route('/logout').post(auth, logoutSession);
-router.route('/logoutall').post(logoutAllSessions);
+router.route('/logoutall').post(auth, logoutAllSessions);
 
 module.exports = router;
