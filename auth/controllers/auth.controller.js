@@ -22,10 +22,6 @@ exports.login = asyncHandler(async (req, res, next) => {
   sendJsonResponse(user, 200, res);
 });
 
-exports.adminProfile = asyncHandler(async (req, res, next) => {
-  res.send('getME');
-});
-
 exports.logoutSession = asyncHandler(async (req, res, next) => {
   req.user.sessionTokens = req.user.sessionTokens.filter(
     token => token.token !== req.token
@@ -46,4 +42,13 @@ exports.logoutAllSessions = asyncHandler(async (req, res, next) => {
   req.user.tokens = [];
   await req.user.save();
   res.status(200).json({ success: true, msg: `session cleared` });
+});
+
+exports.checkSessionToken = asyncHandler(async (req, res, next) => {
+  // console.log(`${req.headers.host} from sql server`);
+  console.log(req.headers);
+  console.log(req.token);
+  // console.log(req.statusMessage);
+
+  res.send('this from auth server');
 });
