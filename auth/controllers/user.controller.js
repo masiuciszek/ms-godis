@@ -1,15 +1,20 @@
+// @ts-nocheck
 const User = require('../models/User');
+const asyncHandler = require('../middlewares/asyncHandler');
 
 exports.register = async (req, res, next) => {
-  // try {
-  //   const user = await User.create(req.body);
-  //   res.send('apa');
-  //   // res.status(200).json({ success: true, data: user });
-  // } catch (err) {
-  //   console.error(err);
-  //   res.status(500);
-  // }
-  console.log(req.body);
-  const newUser = await User.create(req.body);
-  res.send(newUser);
+  try {
+    const newUser = await User.create(req.body);
+    await newUser.generateAuthToken();
+    res.status(200).json({ success: true, data: newUser });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ success: false, msg: 'server error' });
+  }
 };
+
+exports.getMe = asyncHandler(async (req, res, next) => {
+  const loggedInUser = await User.findById(req.user._id);
+
+  res.status(200).json({ success: true, data: loggedInUser });
+});

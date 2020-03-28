@@ -1,5 +1,6 @@
 const express = require('express');
 
+const cookieParser = require('cookie-parser');
 const { connectDb } = require('./config/db');
 
 connectDb();
@@ -12,7 +13,7 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 app.use(express.json());
-
+app.use(cookieParser());
 app.use('/authapi/auth', authRouter);
 app.use('/authapi/user', userRouter);
 
