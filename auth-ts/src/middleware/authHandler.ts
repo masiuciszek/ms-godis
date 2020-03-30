@@ -45,6 +45,8 @@ export const authHandler = asyncHandler(
           new ErrorResponse('Not authorized to access this route', 401)
         );
       }
+      req.user = user;
+      req.token = token;
       // console.log(decoded);
       // console.log(user);
       next();

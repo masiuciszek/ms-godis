@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable prefer-const */
 import { Request, Response, NextFunction } from 'express';
 import ErrorResponse from '../utils/ErroroResponse';
@@ -20,7 +21,7 @@ export const errorHandler = (
     const message = 'No duplicate values';
     error = new ErrorResponse(message, 404);
   }
-  if (err.message === 'jwt malformed' && err.name === 'JsonWebTokenError') {
+  if (err.message === 'jwt malformed' || err.name === 'JsonWebTokenError') {
     const message = 'Authorization error';
     error = new ErrorResponse(message, 404);
   }
