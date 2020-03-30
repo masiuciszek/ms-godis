@@ -1,11 +1,9 @@
-/* eslint-disable import/no-unresolved */
 import { Router } from 'express';
-import { register, getProfile } from '../controllers/user.controller';
-import { authHandler } from '../middlewares/authHandler';
+import { register, getMe, getAdmin } from '../controllers/user.controller';
 
 const router = Router();
 
 router.route('/register').post(register);
-router.route('/me/profile').get(authHandler, getProfile);
-
+router.route('/getme').get(getMe);
+router.route('/getadminprofile').get(getAdmin);
 export { router };

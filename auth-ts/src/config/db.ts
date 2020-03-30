@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-export const mongoUri = 'mongodb://127.0.0.1:27017/msgodis';
+export const mongoUri = 'mongodb://127.0.0.1:27017/msgodis-ts';
 
 export default async (): Promise<void> => {
   try {

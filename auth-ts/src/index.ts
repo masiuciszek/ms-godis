@@ -7,7 +7,7 @@ import cookieParser from 'cookie-parser';
 import { router as authRouter } from './routes/auth';
 import { router as userRouter } from './routes/user';
 import db from './config/db';
-import { errorHandler } from './middlewares/error';
+// import { errorHandler } from './middlewares/error';
 
 db();
 const app: Application = express();
@@ -20,7 +20,7 @@ app.use(morgan('dev'));
 app.use('/authapi/auth', authRouter);
 app.use('/authapi/user', userRouter);
 
-app.use(errorHandler);
+// app.use(errorHandler);
 
 app.listen(port, () => {
   console.log(`port is running on port ${port}`.bgWhite.black.bold);

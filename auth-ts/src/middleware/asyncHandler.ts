@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-export default (fn: Function) => (
+export const asyncHandler = (fn: Function) => (
   req: Request,
   res: Response,
   next: NextFunction
