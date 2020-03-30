@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mysql = require('mysql2');
 
 const connectDb = async () => {
   try {
@@ -14,6 +15,21 @@ const connectDb = async () => {
   }
 };
 
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'marcell',
+  password: 'rootroot',
+  database: 'godis',
+  multipleStatements: true,
+});
+
+function connectSQL() {
+  connection.connect(err => {
+    if (err) throw new Error(err);
+    console.log('mySql is connected'.bgBlue.white.bold);
+  });
+}
+
 async function connectToDb() {
   await mongoose
     .connect('mongodb://authdb', {
@@ -25,4 +41,4 @@ async function connectToDb() {
     .then(() => console.log('connection to db working'.bgGreen));
 }
 
-module.exports = { connectToDb, connectDb };
+module.exports = { connectToDb, connectDb, connectSQL, connection };

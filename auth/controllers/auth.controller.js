@@ -52,3 +52,13 @@ exports.checkSessionToken = asyncHandler(async (req, res, next) => {
 
   res.send('this from auth server');
 });
+
+// Check if admin
+exports.isAdmin = asyncHandler(async (req, res, next) => {
+  console.log(req.user.role);
+  let response = false;
+  if (req.user.role === 'admin') {
+    response = true;
+  }
+  res.status(200).json({ success: true, response });
+});
