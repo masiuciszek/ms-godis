@@ -1,5 +1,10 @@
 import { Document } from 'mongoose';
 
+
+enum UserRole {
+  USER = 'USER',
+  ADMIN = 'ADMIN'
+}
 export interface IToken {
   token: string;
 }

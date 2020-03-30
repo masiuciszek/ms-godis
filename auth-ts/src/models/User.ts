@@ -9,6 +9,7 @@ const UserSchema = new Schema<IUser>({
     type: String,
     required: ['Please fill in your username', true],
     trim: true,
+    lowercase: true,
     minlength: 5,
     unique: true,
   },
@@ -36,8 +37,6 @@ const UserSchema = new Schema<IUser>({
     },
   ],
 });
-
-const User = mongoose.model('User', UserSchema);
 
 UserSchema.pre<IUser>('save', async function(next: NextFunction) {
   const user = this;
@@ -69,5 +68,5 @@ UserSchema.methods.mathPasswords = async function(
 
   return isMatchedPassword;
 };
-
+const User = mongoose.model<IUser>('User', UserSchema);
 export default User;
