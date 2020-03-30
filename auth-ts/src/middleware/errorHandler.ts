@@ -20,6 +20,10 @@ export const errorHandler = (
     const message = 'No duplicate values';
     error = new ErrorResponse(message, 404);
   }
+  if (err.message === 'jwt malformed' && err.name === 'JsonWebTokenError') {
+    const message = 'Authorization error';
+    error = new ErrorResponse(message, 404);
+  }
 
   res
     .status(error.statusCode || 500)
