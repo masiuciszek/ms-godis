@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { IAuthState, AuthTypesReducer, AuthActionTypes } from './auth.types';
 
 
@@ -21,6 +22,7 @@ export default (state: IAuthState = initialState, action: AuthTypesReducer) => {
       };
     case AuthActionTypes.REGISTER_SUCCESS:
     case AuthActionTypes.LOGIN_SUCCESS:
+      localStorage.setItem('token', action.payload);
       return {
         ...state,
         token: action.payload,

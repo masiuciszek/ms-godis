@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import axios from 'axios';
 import { Dispatch } from 'react';
 import Cookies from 'js-cookie';
@@ -8,10 +9,8 @@ import setAuthToken from '../../utils/setAuthToken';
 
 
 export const loadUser = () => async (dispatch: Dispatch< IUserLoadedAction| IAuthErrorAction >) => {
-  let token: any;
-  if (Cookies.get('token')) {
-    token = Cookies.get('token');
-    setAuthToken(token);
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
   }
   try {
     const response = await axios.get('/authapi/user/me');
@@ -45,6 +44,7 @@ export const registerUser = (
       type: AuthActionTypes.REGISTER_SUCCESS,
       payload: data.token,
     });
+
     loadUser();
   } catch (err) {
     console.error(err);
@@ -82,4 +82,4 @@ export const loginUser = (
 };
 
 
-export const getToken = () => {};
+export const logoutUser = () => {};

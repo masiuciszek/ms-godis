@@ -1,18 +1,30 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { Redirect, RouteComponentProps } from 'react-router-dom';
+import * as H from 'history';
 import Form from './Form';
 import { IFormData } from '../../redux/auth/auth.types';
 import { loginUser } from '../../redux/auth/auth.actions';
+import { AppState } from '../../redux';
 
 
-interface Props {
+interface Props extends RouteComponentProps{
   loginUser: Function;
+  isAuth: boolean;
+  history: H.History<any>;
 }
 
-const Login: React.FC<Props> = ({ loginUser }) => {
+
+const Login: React.FC<Props> = ({ loginUser, isAuth, history }) => {
   const [formData, setFormData] = React.useState<IFormData>({
     username: '',
     password: '',
+  });
+
+  React.useEffect(() => {
+    if (isAuth) {
+      history.push('/');
+    }
   });
 
 
@@ -35,9 +47,14 @@ const Login: React.FC<Props> = ({ loginUser }) => {
   return (
 
     <>
+      <h1>LOGIN</h1>
       <Form handleChange={handleChange} handleSubmit={handleSubmit} formData={formData} />
     </>
   );
 };
 
-export default connect(null, { loginUser })(Login);
+const mapStateToProps = (state: AppState) => ({
+  isAuth: state.auth.isAuth,
+});
+
+export default connect(mapStateToProps, { loginUser })(Login);

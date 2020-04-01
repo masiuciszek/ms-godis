@@ -37,22 +37,10 @@ const Register: React.FC<Props> = ({ registerUser }) => {
 
   return (
     <>
+      <h1>REGISTER</h1>
       <Form handleChange={handleChange} handleSubmit={handleSubmit} formData={formData} />
     </>
   );
 };
 
 export default connect(null, { registerUser })(Register);
-
-{ /* <form onSubmit={handleSubmit}>
-<label htmlFor="username">
-  <span>username</span>
-  <input type="text" name="username" placeholder="username" value={formData.username} onChange={handleChange} />
-</label>
-
-<label htmlFor="password">
-  <span>password</span>
-  <input type="text" name="password" placeholder="password" value={formData.password} onChange={handleChange} />
-</label>
-<button type="submit">Register</button>
-</form> */ }

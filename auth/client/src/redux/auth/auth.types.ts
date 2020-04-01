@@ -64,6 +64,10 @@ export interface IAuthErrorAction {
   type: AuthActionTypes.AUTH_ERROR;
 }
 
+export interface IAuthLogoutAction {
+  type: AuthActionTypes.LOGOUT;
+}
+
 export type AuthTypesReducer =
    IRegisterAction
    | IRegisterFail
@@ -71,3 +75,4 @@ export type AuthTypesReducer =
    | ILoginFail
    | IUserLoadedAction
    | IAuthErrorAction
+   | IAuthLogoutAction
