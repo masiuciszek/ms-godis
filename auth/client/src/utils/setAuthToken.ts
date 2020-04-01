@@ -1,3 +1,4 @@
+/* eslint-disable dot-notation */
 import axios from 'axios';
 
 const setAuthToken = (token: string) => {
@@ -5,7 +6,8 @@ const setAuthToken = (token: string) => {
     axios.defaults.headers.common.Authorization = token;
   } else {
     // delete token if no passed token
-    delete axios.defaults.common.Authorization;
+    // delete axios.defaults.common['Authorization'];
+    delete axios.defaults.headers['Authorization'];
   }
 };
 

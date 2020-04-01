@@ -24,6 +24,8 @@ if (Cookie.get('token')) {
   setAuthToken(token);
 }
 
+console.log('token', Cookie.get('token'));
+
 function App() {
   const [formData, setFormData] = React.useState<IFormData>({
     username: '',

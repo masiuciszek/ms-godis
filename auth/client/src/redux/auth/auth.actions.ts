@@ -45,6 +45,7 @@ export const registerUser = (
       type: AuthActionTypes.REGISTER_SUCCESS,
       payload: data.token,
     });
+    loadUser();
   } catch (err) {
     console.error(err);
     dispatch({
@@ -70,6 +71,7 @@ export const loginUser = (
       type: AuthActionTypes.LOGIN_SUCCESS,
       payload: data.token,
     });
+    loadUser();
   } catch (err) {
     console.error(err);
     dispatch({
