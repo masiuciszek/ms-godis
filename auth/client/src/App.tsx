@@ -4,6 +4,10 @@
 import React from 'react';
 import './App.css';
 import axios from 'axios';
+import Cookie from 'js-cookie';
+import Register from './components/auth/Register';
+import Login from './components/auth/Login';
+import setAuthToken from './utils/setAuthToken';
 
 interface IFormData {
   username: string;
@@ -14,6 +18,11 @@ interface IToken {
   token? : string | undefined;
 }
 
+let token: any;
+if (Cookie.get('token')) {
+  token = Cookie.get('token');
+  setAuthToken(token);
+}
 
 function App() {
   const [formData, setFormData] = React.useState<IFormData>({
@@ -65,23 +74,31 @@ function App() {
 
   return (
     <div className="App">
-      <h3>{isToken && isToken.token ? 'Welcome Logged in user' : 'not logged in'}</h3>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">
-          <span>Username</span>
-          <input type="text" name="username" placeholder="username" value={formData.username} onChange={handleChange} />
-        </label>
 
-        <label htmlFor="password">
-          <span>Password</span>
-          <input type="password" name="password" placeholder="password" value={formData.password} onChange={handleChange} />
-        </label>
+      <h1>Register</h1>
+      <Register />
 
-        <button type="submit">Register</button>
-      </form>
-      <button type="button" onClick={getCookies}>Get cookie</button>
+      <h1>Login</h1>
+      <Login />
     </div>
   );
 }
 
 export default App;
+{ /* <div className="App">
+<h3>{isToken && isToken.token ? 'Welcome Logged in user' : 'not logged in'}</h3>
+<form onSubmit={handleSubmit}>
+  <label htmlFor="username">
+    <span>Username</span>
+    <input type="text" name="username" placeholder="username" value={formData.username} onChange={handleChange} />
+  </label>
+
+  <label htmlFor="password">
+    <span>Password</span>
+    <input type="password" name="password" placeholder="password" value={formData.password} onChange={handleChange} />
+  </label>
+
+  <button type="submit">Register</button>
+</form>
+<button type="button" onClick={getCookies}>Get cookie</button>
+</div> */ }
