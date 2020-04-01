@@ -17,7 +17,7 @@ const auth = asyncHandler(async (req, res, next) => {
     token = req.cookies.token;
   }
 
-  console.log(token);
+  // console.log(token);
 
   if (!token) {
     throw new Error('NOT AUTHORIZED!');

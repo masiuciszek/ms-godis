@@ -1,7 +1,5 @@
 const express = require('express');
-const path = require('path');
 const cookieParser = require('cookie-parser');
-const fetch = require('node-fetch');
 const cors = require('cors');
 const morgan = require('morgan');
 const { connectDb, connectSQL } = require('./config/db');
@@ -27,6 +25,10 @@ app.use('/authapi/auth', authRouter);
 app.use('/authapi/user', userRouter);
 app.use('/goidisapi/godis', candyRouter);
 app.use('/goidisapi/company', companyRouter);
+
+// app.get('/',(req,res) => {
+//   console.log(req.cookies)
+// })
 
 app.listen(port, () =>
   console.log('Auth service listening on port 4000'.bgMagenta.white)

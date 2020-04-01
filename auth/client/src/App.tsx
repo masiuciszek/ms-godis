@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/interface-name-prefix */
 /* eslint-disable consistent-return */
 /* eslint-disable no-shadow */
 import React from 'react';
@@ -9,12 +10,18 @@ interface IFormData {
   password: string;
 }
 
+interface IToken {
+  token? : string | undefined;
+}
+
 
 function App() {
   const [formData, setFormData] = React.useState<IFormData>({
     username: '',
     password: '',
   });
+  const [isAuth, setisAuth] = React.useState<boolean>(false);
+  const [isToken, setIsToken] = React.useState<IToken>({});
 
   const register = async (formData: IFormData): Promise<any> => {
     try {
@@ -30,9 +37,24 @@ function App() {
     }
   };
 
+  const getCookies = async () => {
+    try {
+      const res = await axios.get('/goidisapi/company', { headers: { Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlODQ2YWEyZmQ2Yjk3NThjNDMxNTI1MiIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNTg1NzM2MzU0LCJleHAiOjE1ODgzMjgzNTR9.EaZ8zeeh5_PtJZb1hkuEXRjckSzVTdwy7xjDTrArK8U' } });
+      const resBody = await res.data;
+      setIsToken(resBody);
+      console.log(resBody);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     register(formData);
+    setFormData({
+      username: '',
+      password: '',
+    });
   };
 
 
@@ -43,6 +65,7 @@ function App() {
 
   return (
     <div className="App">
+      <h3>{isToken && isToken.token ? 'Welcome Logged in user' : 'not logged in'}</h3>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">
           <span>Username</span>
@@ -56,6 +79,7 @@ function App() {
 
         <button type="submit">Register</button>
       </form>
+      <button type="button" onClick={getCookies}>Get cookie</button>
     </div>
   );
 }
