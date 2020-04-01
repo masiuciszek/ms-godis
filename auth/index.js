@@ -1,13 +1,14 @@
+// @ts-nocheck
 const express = require('express');
-const path = require('path');
 const cookieParser = require('cookie-parser');
 const fetch = require('node-fetch');
+
 const cors = require('cors');
 const morgan = require('morgan');
 const { connectDb, connectSQL } = require('./config/db');
 
 connectDb();
-connectSQL();
+// connectSQL();
 const authRouter = require('./routes/auth');
 const userRouter = require('./routes/user');
 const candyRouter = require('./routes/candies');
