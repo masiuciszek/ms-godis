@@ -4,18 +4,18 @@ const asyncHandler = require('./asyncHandler');
 const User = require('../models/User');
 
 const auth = asyncHandler(async (req, res, next) => {
-  let token;
-
-  if (
-    req.headers.authorization &&
-    req.headers.authorization.startsWith('Bearer')
-  ) {
-    // Set token from Bearer token in header
-    token = req.headers.authorization.split(' ')[1];
-    // Set token from cookie
-  } else if (req.cookies.token) {
-    token = req.cookies.token;
-  }
+  const token = req.header('Authorization').split(' ')[1];
+  // let token;
+  // if (
+  //   req.headers.authorization &&
+  //   req.headers.authorization.startsWith('Bearer')
+  // ) {
+  //   // Set token from Bearer token in header
+  //   token = req.headers.authorization.split(' ')[1];
+  //   // Set token from cookie
+  // } else if (req.cookies.token) {
+  //   token = req.cookies.token;
+  // }
 
   // console.log(token);
 

@@ -32,6 +32,19 @@ function App() {
   }, []);
 
 
+  const test = async () => {
+    const res = await fetch('/authapi/user/me', {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`,
+      },
+    });
+    const data = await res.json();
+    console.log(data.data);
+  };
+
+  // test();
+
   console.log(localStorage.token);
   return (
     <div className="App">

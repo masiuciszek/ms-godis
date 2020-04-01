@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 /* eslint-disable no-undef */
 import axios from 'axios';
 import { Dispatch } from 'react';
@@ -13,13 +14,26 @@ export const loadUser = () => async (dispatch: Dispatch< IUserLoadedAction| IAut
     setAuthToken(localStorage.token);
   }
   try {
-    const response = await axios.get('/authapi/user/me');
+    // const response = await axios.get('/authapi/user/me', {
+    //   headers: {
+    //     Authorization: `Bearer ${localStorage.token}`,
+    //   },
+    // });
 
-    const data = await response.data;
-
+    // const data = await response.data;
+    // console.log('load user data', data);
+    const res = await fetch('/authapi/user/me', {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`,
+      },
+    });
+    const data = await res.json();
+    // TODO : DELETE!
+    console.log('USER LOADED', data);
     dispatch({
       type: AuthActionTypes.USER_LOADED,
-      payload: data,
+      payload: data.data,
     });
   } catch (err) {
     dispatch({
@@ -40,9 +54,11 @@ export const registerUser = (
   try {
     const response = await axios.post('/authapi/user/register', formData, config);
     const data = await response.data;
+
+
     dispatch({
       type: AuthActionTypes.REGISTER_SUCCESS,
-      payload: data.token,
+      payload: data,
     });
 
     loadUser();
@@ -69,7 +85,7 @@ export const loginUser = (
     const data = await response.data;
     dispatch({
       type: AuthActionTypes.LOGIN_SUCCESS,
-      payload: data.token,
+      payload: data,
     });
     loadUser();
   } catch (err) {

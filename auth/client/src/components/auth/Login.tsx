@@ -1,6 +1,10 @@
+/* eslint-disable no-shadow */
+/* eslint-disable react/prop-types */
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/extensions */
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Redirect, RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router-dom';
 import * as H from 'history';
 import Form from './Form';
 import { IFormData } from '../../redux/auth/auth.types';

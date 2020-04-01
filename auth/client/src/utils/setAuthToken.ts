@@ -3,8 +3,7 @@ import axios from 'axios';
 
 const setAuthToken = (token: string) => {
   if (token) {
-    // TODO: Delete
-    console.log('axios.defaults  ', axios.defaults.headers.common['Authorization'] = token);
+    // console.log('axios.defaults  ', axios.defaults.headers.common['Authorization'] = token);
     axios.defaults.headers.common['Authorization'] = token;
   } else {
     // delete token if no passed token

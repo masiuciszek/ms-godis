@@ -5,6 +5,15 @@ export interface IUser{
   password: string;
 }
 
+export interface IUserData {
+  _id: string;
+  createdAt: string;
+  password: string;
+  role: string;
+  sessionTokens: IToken[];
+  username: string;
+}
+
 
 export interface IFormData {
   username: string;
@@ -19,7 +28,7 @@ export interface IAuthState{
   token: string | null | undefined;
   loading: boolean;
   isAuth: boolean;
-  user: null | IUser;
+  user: null | IUserData;
   error: null | Record<string, any>;
 }
 
@@ -37,7 +46,7 @@ export enum AuthActionTypes {
 
 export interface IRegisterAction {
   type: AuthActionTypes.REGISTER_SUCCESS;
-  payload: string; // token
+  payload: Record<string, any>; // {success:true, token:'asdasdasda21212sa21das} from the server-side
 }
 
 export interface IRegisterFail {
@@ -47,7 +56,7 @@ export interface IRegisterFail {
 
 export interface ILoginSuccess {
   type: AuthActionTypes.LOGIN_SUCCESS;
-  payload: string; // token
+  payload: Record<string, any>; // {success:true, token:'asdasdasda21212sa21das} from the server-side
 }
 
 export interface ILoginFail {
@@ -57,7 +66,7 @@ export interface ILoginFail {
 
 export interface IUserLoadedAction {
   type: AuthActionTypes.USER_LOADED;
-  payload: IUser;
+  payload: IUserData;
 }
 
 export interface IAuthErrorAction {

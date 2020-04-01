@@ -39,7 +39,7 @@ exports.logoutSession = asyncHandler(async (req, res, next) => {
 });
 
 exports.logoutAllSessions = asyncHandler(async (req, res, next) => {
-  req.user.tokens = [];
+  req.user.sessionTokens = [];
   await req.user.save();
   res.status(200).json({ success: true, msg: `session cleared` });
 });
