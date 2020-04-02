@@ -4,33 +4,22 @@ import axios from 'axios';
 import { Dispatch } from 'react';
 import Cookies from 'js-cookie';
 import {
-  IRegisterAction, AuthActionTypes, IRegisterFail, IFormData, ILoginSuccess, ILoginFail, IUserLoadedAction, IAuthErrorAction,
+  IRegisterAction, AuthActionTypes, IRegisterFail, IFormData,
+  ILoginSuccess, ILoginFail, IUserLoadedAction, IAuthErrorAction, IAuthLogoutAction, IIsAdminAction,
 } from './auth.types';
 import setAuthToken from '../../utils/setAuthToken';
 
 
 export const loadUser = () => async (dispatch: Dispatch< IUserLoadedAction| IAuthErrorAction >) => {
-  // if (localStorage.token) {
-  //   setAuthToken(localStorage.token);
-  // }
   let token: any;
   if (Cookies.get('token')) {
     token = Cookies.get('token');
     setAuthToken(token);
   }
   try {
-    // const response = await axios.get('/authapi/user/me', {
-    //   headers: {
-    //     Authorization: `Bearer ${localStorage.token}`,
-    //   },
-    // });
-
-    // const data = await response.data;
-    // console.log('load user data', data);
     const res = await fetch('/authapi/user/me', {
       method: 'GET',
       headers: {
-        // Authorization: `Bearer ${localStorage.token}`,
         Authorization: `Bearer ${token}`,
       },
     });
@@ -102,4 +91,38 @@ export const loginUser = (
 };
 
 
-export const logoutUser = () => {};
+export const logoutUser = () => async (dispatch: Dispatch<IAuthLogoutAction>) => {
+  try {
+    await fetch('/authapi/auth/logout', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${Cookies.get('token')}`,
+      },
+    });
+    dispatch({
+      type: AuthActionTypes.LOGOUT,
+    });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+
+export const isAdmin = () => async (dispatch: Dispatch<IIsAdminAction>) => {
+  try {
+    const response = await fetch('/authapi/auth/isadmin', {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${Cookies.get('token')}`,
+      },
+    });
+    const data = await response.json();
+
+    dispatch({
+      type: AuthActionTypes.IS_ADMIN,
+      payload: data.response,
+    });
+  } catch (err) {
+    console.error(err);
+  }
+};

@@ -7,6 +7,7 @@ const initialState: IAuthState = {
   token: Cookie.get('token'),
   loading: true,
   isAuth: false,
+  isAdmin: false,
   user: null,
   error: null,
 
@@ -23,20 +24,28 @@ export default (state: IAuthState = initialState, action: AuthTypesReducer) => {
       };
     case AuthActionTypes.REGISTER_SUCCESS:
     case AuthActionTypes.LOGIN_SUCCESS:
-      // localStorage.setItem('token', action.payload.token);
       return {
         ...state,
         ...action.payload,
         isAuth: true,
         loading: false,
       };
+
     case AuthActionTypes.REGISTER_FAIL:
-      // localStorage.removeItem('token');
+    case AuthActionTypes.LOGOUT:
+      Cookie.remove('token');
       return {
         ...state,
         isAuth: false,
         loading: false,
+        isAdmin: false,
         user: null,
+      };
+    case AuthActionTypes.IS_ADMIN:
+      return {
+        ...state,
+        loading: false,
+        isAdmin: action.payload,
       };
     default:
       return state;

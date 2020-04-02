@@ -1,11 +1,16 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-shadow */
+/* eslint-disable @typescript-eslint/interface-name-prefix */
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { AppState } from '../../../redux';
+import { logoutUser } from '../../../redux/auth/auth.actions';
 
 interface Props {
   isAuth: boolean;
   isLoading: boolean;
+  logoutUser: () => Promise<void>;
 }
 
 interface INavLink {
@@ -14,7 +19,7 @@ interface INavLink {
   path: string;
 }
 
-const NavList: React.FC<Props> = ({ isAuth, isLoading }) => {
+const NavList: React.FC<Props> = ({ isAuth, isLoading, logoutUser }) => {
   const navLinks: INavLink[] = [
 
     {
@@ -39,7 +44,14 @@ const NavList: React.FC<Props> = ({ isAuth, isLoading }) => {
           </li>
           <li>
             {' '}
-            <span>Logout</span>
+            <span onClick={() => {
+              console.log('apa');
+              logoutUser();
+            }}
+            >
+              Logout
+
+            </span>
             {' '}
           </li>
         </>
@@ -58,4 +70,5 @@ const mapStateToProps = (state: AppState) => ({
   isAuth: state.auth.isAuth,
   isLoading: state.auth.loading,
 });
-export default connect(mapStateToProps)(NavList);
+
+export default connect(mapStateToProps, { logoutUser })(NavList);

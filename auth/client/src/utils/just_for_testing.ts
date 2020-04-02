@@ -21,5 +21,19 @@
 //   setAuthToken(localStorage.token);
 // }
 
+
+// const response = await axios.get('/authapi/user/me', {
+//   headers: {
+//     Authorization: `Bearer ${localStorage.token}`,
+//   },
+// });
+
+// const data = await response.data;
+// console.log('load user data', data);
+
+// if (localStorage.token) {
+//   setAuthToken(localStorage.token);
+// }
+
 // TODO: DELETE , after everything works!!!
 export const a = () => {};

@@ -29,6 +29,7 @@ export interface IAuthState{
   loading: boolean;
   isAuth: boolean;
   user: null | IUserData;
+  isAdmin: boolean;
   error: null | Record<string, any>;
 }
 
@@ -40,13 +41,15 @@ export enum AuthActionTypes {
   AUTH_ERROR = 'AUTH_ERROR',
   LOGIN_SUCCESS = 'LOGIN_SUCCESS',
   LOGIN_FAIL = 'LOGIN_FAIL',
-  LOGOUT = 'LOGOUT'
+  LOGOUT = 'LOGOUT',
+  IS_ADMIN = 'IS_ADMIN'
 }
 
 
 export interface IRegisterAction {
   type: AuthActionTypes.REGISTER_SUCCESS;
-  payload: Record<string, any>; // {success:true, token:'asdasdasda21212sa21das} from the server-side
+  payload: Record<string, any>;
+  // {success:true, token:'asdasdasda21212sa21das} from the server-side
 }
 
 export interface IRegisterFail {
@@ -56,7 +59,8 @@ export interface IRegisterFail {
 
 export interface ILoginSuccess {
   type: AuthActionTypes.LOGIN_SUCCESS;
-  payload: Record<string, any>; // {success:true, token:'asdasdasda21212sa21das} from the server-side
+  payload: Record<string, any>;
+  // {success:true, token:'asdasdasda21212sa21das} from the server-side
 }
 
 export interface ILoginFail {
@@ -73,6 +77,11 @@ export interface IAuthErrorAction {
   type: AuthActionTypes.AUTH_ERROR;
 }
 
+export interface IIsAdminAction {
+  type: AuthActionTypes.IS_ADMIN;
+  payload: boolean;
+}
+
 export interface IAuthLogoutAction {
   type: AuthActionTypes.LOGOUT;
 }
@@ -84,4 +93,5 @@ export type AuthTypesReducer =
    | ILoginFail
    | IUserLoadedAction
    | IAuthErrorAction
+   | IIsAdminAction
    | IAuthLogoutAction
