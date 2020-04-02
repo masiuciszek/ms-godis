@@ -56,12 +56,11 @@ export const registerUser = (
     const data = await response.data;
 
 
+    loadUser();
     dispatch({
       type: AuthActionTypes.REGISTER_SUCCESS,
       payload: data,
     });
-
-    loadUser();
   } catch (err) {
     console.error(err);
     dispatch({
@@ -83,11 +82,11 @@ export const loginUser = (
   try {
     const response = await axios.post('/authapi/auth/login', formData, config);
     const data = await response.data;
+    loadUser();
     dispatch({
       type: AuthActionTypes.LOGIN_SUCCESS,
       payload: data,
     });
-    loadUser();
   } catch (err) {
     console.error(err);
     dispatch({

@@ -6,6 +6,7 @@
 import React from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
+import Cookie from 'js-cookie';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import setAuthToken from './utils/setAuthToken';
@@ -20,18 +21,16 @@ interface IToken {
   token? : string | undefined;
 }
 
-if (localStorage.token) {
-  setAuthToken(localStorage.token);
+// if (localStorage.token) {
+//   setAuthToken(localStorage.token);
+// }
+let token: any;
+if (Cookie.get('token')) {
+  token = Cookie.get('token');
+  setAuthToken(token);
 }
 
 function App() {
-  React.useEffect(() => {
-    if (localStorage.token) {
-      setAuthToken(localStorage.token);
-    }
-  }, []);
-
-
   const test = async () => {
     const res = await fetch('/authapi/user/me', {
       method: 'GET',
@@ -43,9 +42,14 @@ function App() {
     console.log(data.data);
   };
 
-  // test();
+  const test2 = () => {
+    const x = Cookie.get('token');
+    console.log('Cookie  ', x);
+  };
 
-  console.log(localStorage.token);
+  // console.log(test2());
+
+
   return (
     <div className="App">
       <Switch>
