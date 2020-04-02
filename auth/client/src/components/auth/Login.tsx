@@ -18,7 +18,7 @@ interface Props extends RouteComponentProps{
   history: H.History<any>;
 }
 
-
+//
 const Login: React.FC<Props> = ({ loginUser, isAuth, history }) => {
   const [formData, setFormData] = React.useState<IFormData>({
     username: '',

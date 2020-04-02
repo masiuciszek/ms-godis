@@ -10,8 +10,13 @@ import setAuthToken from '../../utils/setAuthToken';
 
 
 export const loadUser = () => async (dispatch: Dispatch< IUserLoadedAction| IAuthErrorAction >) => {
-  if (localStorage.token) {
-    setAuthToken(localStorage.token);
+  // if (localStorage.token) {
+  //   setAuthToken(localStorage.token);
+  // }
+  let token: any;
+  if (Cookies.get('token')) {
+    token = Cookies.get('token');
+    setAuthToken(token);
   }
   try {
     // const response = await axios.get('/authapi/user/me', {
@@ -25,12 +30,12 @@ export const loadUser = () => async (dispatch: Dispatch< IUserLoadedAction| IAut
     const res = await fetch('/authapi/user/me', {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${localStorage.token}`,
+        // Authorization: `Bearer ${localStorage.token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     const data = await res.json();
-    // TODO : DELETE!
-    console.log('USER LOADED', data);
+
     dispatch({
       type: AuthActionTypes.USER_LOADED,
       payload: data.data,
@@ -56,11 +61,11 @@ export const registerUser = (
     const data = await response.data;
 
 
-    loadUser();
     dispatch({
       type: AuthActionTypes.REGISTER_SUCCESS,
       payload: data,
     });
+    loadUser();
   } catch (err) {
     console.error(err);
     dispatch({
@@ -82,11 +87,11 @@ export const loginUser = (
   try {
     const response = await axios.post('/authapi/auth/login', formData, config);
     const data = await response.data;
-    loadUser();
     dispatch({
       type: AuthActionTypes.LOGIN_SUCCESS,
       payload: data,
     });
+    loadUser();
   } catch (err) {
     console.error(err);
     dispatch({

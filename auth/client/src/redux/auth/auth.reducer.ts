@@ -1,9 +1,10 @@
 /* eslint-disable no-undef */
+import Cookie from 'js-cookie';
 import { IAuthState, AuthTypesReducer, AuthActionTypes } from './auth.types';
 
-
 const initialState: IAuthState = {
-  token: localStorage.getItem('token'),
+  // token: localStorage.getItem('token'),
+  token: Cookie.get('token'),
   loading: true,
   isAuth: false,
   user: null,
@@ -22,8 +23,7 @@ export default (state: IAuthState = initialState, action: AuthTypesReducer) => {
       };
     case AuthActionTypes.REGISTER_SUCCESS:
     case AuthActionTypes.LOGIN_SUCCESS:
-
-      localStorage.setItem('token', action.payload.token);
+      // localStorage.setItem('token', action.payload.token);
       return {
         ...state,
         ...action.payload,
@@ -31,7 +31,7 @@ export default (state: IAuthState = initialState, action: AuthTypesReducer) => {
         loading: false,
       };
     case AuthActionTypes.REGISTER_FAIL:
-      localStorage.removeItem('token');
+      // localStorage.removeItem('token');
       return {
         ...state,
         isAuth: false,
