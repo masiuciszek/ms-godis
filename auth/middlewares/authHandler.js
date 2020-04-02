@@ -4,7 +4,8 @@ const asyncHandler = require('./asyncHandler');
 const User = require('../models/User');
 
 const auth = asyncHandler(async (req, res, next) => {
-  const token = req.header('Authorization').split(' ')[1];
+  const token =
+    req.header('Authorization').split(' ')[1] || req.header('x-auth-token');
   // let token;
   // if (
   //   req.headers.authorization &&
