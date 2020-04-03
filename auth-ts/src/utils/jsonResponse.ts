@@ -12,12 +12,12 @@ const jsonResponse = async (user: IUser, statusCode: number, res: Response) => {
 
   const options: IOptions = {
     expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
-    httpOnly: true,
+    httpOnly: false,
   };
 
   res
     .status(statusCode)
-    .cookie('token', token, options) // name of token, token value , adn options
+    .cookie('token', token, options) // name of cookie, cookie value , adn options
     .json({ success: true, token });
 };
 

@@ -2,7 +2,7 @@
 import express, { Application } from 'express';
 import 'colors';
 import morgan from 'morgan';
-
+import cors from 'cors'
 import cookieParser from 'cookie-parser';
 import { router as authRouter } from './routes/auth';
 import { router as userRouter } from './routes/user';
@@ -14,6 +14,7 @@ const app: Application = express();
 
 const port = process.env.PORT || 4000;
 app.use(express.json());
+app.use(cors());
 app.use(cookieParser());
 
 app.use(morgan('dev'));

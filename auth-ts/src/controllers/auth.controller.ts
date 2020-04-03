@@ -30,13 +30,13 @@ export const login = asyncHandler(
 export const logoutSession = asyncHandler(
   async (req: IAuthRequest, res: Response, next: NextFunction) => {
     req.user.sessionsToken = req.user.sessionsToken.filter(
-      t => t.token !== req.token.toString()
+      t => t.token !== req.token
     );
     await req.user.save();
     // res.clearCookie('token')
     res.cookie('token', 'none', {
       expires: new Date(Date.now() + 10 * 1000),
-      httpOnly: true,
+      httpOnly: false,
     });
     res
       .status(200)

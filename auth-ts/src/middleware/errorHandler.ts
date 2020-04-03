@@ -12,7 +12,7 @@ export const errorHandler = (
   console.log(err);
   let error = { ...err };
 
-  console.log(Object.entries(err));
+  // console.log(Object.entries(err));
   if (err.statusCode === 404) {
     const message = 'invalid credentials';
     error = new ErrorResponse(message, 404);
@@ -22,6 +22,10 @@ export const errorHandler = (
     error = new ErrorResponse(message, 404);
   }
   if (err.message === 'jwt malformed' || err.name === 'JsonWebTokenError') {
+    const message = 'Authorization error';
+    error = new ErrorResponse(message, 404);
+  }
+  if(err.name === 'JsonWebTokenError'){
     const message = 'Authorization error';
     error = new ErrorResponse(message, 404);
   }
