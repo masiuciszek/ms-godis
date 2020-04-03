@@ -8,16 +8,16 @@ import { IToken } from '../../redux/auth/auth.types';
 
 interface Props {
   loadUser: () => void;
-
+  token: any;
   isAuth: boolean;
 }
 
-const Home: React.FC<Props> = ({ loadUser, isAuth }) => {
+const Home: React.FC<Props> = ({ loadUser, isAuth, token }) => {
   React.useEffect(() => {
-    if (isAuth) {
-      loadUser();
-    } else {
+    if (!token) {
       console.log('no token');
+    } else {
+      loadUser();
     }
   }, []);
 

@@ -36,6 +36,7 @@ export default (state: IAuthState = initialState, action: AuthTypesReducer) => {
       return {
         ...state,
         isAuth: false,
+        token: null,
         loading: false,
         isAdmin: false,
         user: null,
