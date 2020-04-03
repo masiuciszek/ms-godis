@@ -1,0 +1,31 @@
+.User {
+  padding: 1.5rem;
+
+}
+
+.User-Title {
+  font-size: 4rem;
+}
+
+.User-Title span {
+  margin: 0 1rem;
+  font-size: 3.5rem;
+}
+
+.User h3 {
+  width: 25rem;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-size: 3rem;
+  box-shadow: 3px 2px 2px 3px #ccc;
+}
+
+.admin-role {
+  color: rgb(245, 241, 3);
+  background: #333;
+}
+
+.user-role {
+  color: steelblue;
+  background: #333;
+}

@@ -4,15 +4,15 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { loadUser } from '../../redux/auth/auth.actions';
 import { AppState } from '../../redux';
-import { IToken } from '../../redux/auth/auth.types';
+
 
 interface Props {
   loadUser: () => void;
   token: any;
-  isAuth: boolean;
+
 }
 
-const Home: React.FC<Props> = ({ loadUser, isAuth, token }) => {
+const Home: React.FC<Props> = ({ loadUser, token }) => {
   React.useEffect(() => {
     if (!token) {
       console.log('no token');
@@ -31,7 +31,7 @@ const Home: React.FC<Props> = ({ loadUser, isAuth, token }) => {
 
 const mapStateToProps = (state: AppState) => ({
   token: state.auth.token,
-  isAuth: state.auth.isAuth,
+
 });
 
 export default connect(mapStateToProps, { loadUser })(Home);

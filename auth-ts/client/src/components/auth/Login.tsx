@@ -27,7 +27,7 @@ const Login: React.FC<Props> = ({ loginUser, isAuth, history }) => {
 
   React.useEffect(() => {
     if (isAuth) {
-      history.push('/');
+      history.push('/me');
     }
   });
 

@@ -17,14 +17,16 @@ export const loadUser = () => async (dispatch: Dispatch< IUserLoadedAction| IAut
     setAuthToken(token);
   }
   try {
-    //
     const res = await fetch('/authapi/user/me', {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
       },
+
     });
     const data = await res.json();
+    // const res = await axios('/authapi/user/me', { headers: { Authorization: `Bearer ${token}` } });
+    // const data = await res.data;
 
     dispatch({
       type: AuthActionTypes.USER_LOADED,
@@ -100,6 +102,7 @@ export const logoutUser = () => async (dispatch: Dispatch<IAuthLogoutAction>) =>
         Authorization: `Bearer ${Cookie.get('token')}`,
       },
     });
+
     dispatch({
       type: AuthActionTypes.LOGOUT,
     });
@@ -118,6 +121,7 @@ export const isAdmin = () => async (dispatch: Dispatch<IIsAdminAction>) => {
       },
     });
     const data = await response.json();
+
 
     dispatch({
       type: AuthActionTypes.IS_ADMIN,
