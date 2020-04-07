@@ -1,0 +1,37 @@
+.Navbar {
+  padding: 1rem 2rem;
+}
+
+#navList {
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+#navList li {
+  padding: 0 .5rem;
+}
+
+#navList li a,
+span {
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  color: #333;
+  cursor: pointer;
+  transition: 300ms ease-in-out;
+  text-decoration: none;
+  padding: .5rem;
+}
+
+
+#navList span:hover {
+  color: #fff;
+  background: #333;
+
+}
+
+#navList a:hover {
+  color: #fff;
+  background: #333;
+
+}

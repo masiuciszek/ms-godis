@@ -1,0 +1,32 @@
+*::before,
+*::after,
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 10px;
+  font-family: 'Roboto Mono', monospace;
+}
+
+body {
+  /* min-height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#MainApp {
+  flex-grow: 1 auto;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}

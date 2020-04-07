@@ -1,0 +1,53 @@
+.CandyList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 2px 3px 3px 3px #ccc;
+  padding: 3rem;
+}
+
+.CandyList li {
+  font-size: 2rem;
+  padding: 1.5rem .5rem;
+  background: #333;
+  color: #fff;
+  display: flex;
+  /* justify-content: space-between; */
+  justify-content: center;
+  margin: 1rem 0;
+  box-shadow: 2px 2px 3px 2px #ccc;
+  border-radius: 1rem;
+
+}
+
+.CandyList li span {
+  /* margin: 0 .3rem; */
+  color: #2370fe;
+  width: 20%;
+  font-size: 2rem;
+  padding: 0;
+
+}
+
+.CandyList li span small.increase {
+  color: greenyellow;
+  margin: 0 .4rem;
+}
+
+.CandyList li span small.decrease {
+  color: tomato;
+  margin: 0 .4rem;
+}
+
+.CandyList .cta span {
+  margin: 0 .6rem;
+  cursor: pointer;
+}
+
+.CandyList .cta #edit-pen {
+  color: #fff;
+}
+
+.CandyList .cta #delete-icon {
+  color: tomato;
+}

@@ -1,0 +1,74 @@
+/* eslint-disable no-shadow */
+/* eslint-disable react/prop-types */
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/extensions */
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { RouteComponentProps } from 'react-router-dom';
+import * as H from 'history';
+import Form from './Form';
+import { IFormData, IUserData } from '../../redux/auth/auth.types';
+import { loginUser } from '../../redux/auth/auth.actions';
+import { AppState } from '../../redux';
+
+
+interface Props extends RouteComponentProps{
+  loginUser: Function;
+  isAuth: boolean;
+  history: H.History<any>;
+  user: IUserData | null;
+}
+
+
+const Login: React.FC<Props> = ({
+  loginUser, isAuth, history, user,
+}) => {
+  const [formData, setFormData] = React.useState<IFormData>({
+    username: '',
+    password: '',
+  });
+
+  React.useEffect(() => {
+    if (isAuth && user && user?.role === 'admin') {
+      history.push('/admin');
+    }
+    if (isAuth && user && user?.role === 'user') {
+      history.push('/user');
+    }
+    if (isAuth && user && user?.role === 'producer') {
+      history.push('/producer');
+    }
+  }, [isAuth]);
+
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const { name, value } = e.target;
+
+    setFormData({ ...formData, [name]: value });
+  };
+
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+    loginUser(formData);
+    setFormData({
+      username: '',
+      password: '',
+    });
+  };
+
+  return (
+
+    <>
+      <h1 className="display-1">LOGIN</h1>
+      <Form handleChange={handleChange} handleSubmit={handleSubmit} formData={formData} isRegister={false} />
+    </>
+  );
+};
+
+const mapStateToProps = (state: AppState) => ({
+  isAuth: state.auth.isAuth,
+  user: state.auth.user,
+});
+
+export default connect(mapStateToProps, { loginUser })(Login);
