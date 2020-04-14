@@ -1,0 +1,61 @@
+.Producer-Deals {
+  max-width: 75vw;
+  margin: 4rem auto;
+  border: 2px solid #333;
+  padding: 2rem 1rem;
+}
+
+.Producer-Deals h3 {
+  font-size: 3rem;
+  letter-spacing: 1rem;
+  padding: 3rem 0;
+}
+
+.Producer-Deals .DealItem {
+  padding: 1rem;
+  border: 2px solid #333;
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem .5rem;
+  box-shadow: 0 8px 6px -6px black;
+}
+
+.Producer-Deals .DealItem p {
+  font-size: 1.6rem;
+  padding: .5rem;
+}
+
+.Producer-Deals .DealItem p span {
+  color: #fff;
+  background: #333;
+}
+
+.Producer-Deals .DealItem .deal-options {
+  display: flex;
+}
+
+.Producer-Deals .DealItem .deal-options span {
+  color: #fff;
+  background: #333;
+  cursor: pointer;
+}
+
+#Delete-deal-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#Deal-input {
+  width: 45vw;
+  margin: 1rem auto;
+  box-shadow: 2px 2px 2px 3px #ccc;
+  border: 2px solid #333;
+  padding: .3rem .6rem;
+  font-size: 1.5rem;
+  border-radius: .5rem;
+  transition: 300ms all;
+}
+
+#Deal-input:focus {
+  width: 43vw;
+}

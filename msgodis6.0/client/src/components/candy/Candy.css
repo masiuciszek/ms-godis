@@ -1,0 +1,41 @@
+.CandyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  width: 90vw;
+  margin: 2rem auto;
+  padding: 1rem;
+  grid-gap: 10px;
+}
+
+.Candy {
+  border: 2px solid #333;
+  box-shadow: 0 8px 6px -6px #333;
+  margin: 1rem auto;
+  padding: 1rem .5rem;
+}
+
+.Candy-header {}
+
+.Candy-header h3 {
+  font-size: 2.5rem;
+  font-family: 'Bangers',
+    cursive;
+}
+
+
+.Candy-body {
+  padding: 1rem;
+}
+
+.Candy-body p {
+  font-size: 18px;
+  padding: 1rem 0;
+  margin: .5rem 0;
+}
+
+.Candy-body p span {
+  background: #333;
+  padding: .2rem .6rem;
+  box-shadow: 2px 2px 3px 3px #ccc;
+  margin: .5rem;
+}

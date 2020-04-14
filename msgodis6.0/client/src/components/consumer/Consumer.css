@@ -1,0 +1,17 @@
+.Consumer {
+  padding: 3rem 2rem;
+  height: 100%;
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.Consumer h1 {
+  font-size: 4rem;
+  padding: 2rem 0;
+}
+
+.Consumer h3 {
+  font-size: 3rem;
+  letter-spacing: .3rem;
+  padding: 4rem 0;
+}

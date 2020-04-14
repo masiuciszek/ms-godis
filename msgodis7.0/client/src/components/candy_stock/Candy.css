@@ -1,0 +1,130 @@
+.CandyList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 2px 3px 3px 3px #ccc;
+  padding: 3rem;
+  max-width: 80vw;
+  margin: 3rem auto;
+}
+
+.CandyList h3 {
+  font-size: 3rem;
+  border-bottom: 2px solid #333;
+}
+
+.CandyList li {
+  padding: 1.5rem .5rem;
+  border: #333 2px solid;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  margin: 1.5rem 0;
+  box-shadow: 2px 2px 3px 2px #ccc;
+  border-radius: 1rem;
+}
+
+.CandyList li p {
+  width: 35%;
+  font-size: 1.7rem;
+
+}
+
+.CandyList li span {
+  color: #2370fe;
+  font-weight: 700;
+  padding: 0;
+
+}
+
+.CandyList .cta span {
+  margin: 0 .6rem;
+  cursor: pointer;
+}
+
+.CandyList .cta #edit-pen {
+  color: #333;
+}
+
+.CandyList .cta #delete-icon {
+  color: tomato;
+}
+
+.CandyStock {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.CandyStock h3 {
+  font-size: 3rem;
+}
+
+.CandyStock .form-group label {
+  font-size: 1.8rem;
+}
+
+.Edit-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Edit-form label strong {
+  font-size: 2rem;
+  /* border: 2px solid red; */
+  text-align: left;
+}
+
+
+.cta {
+  display: flex;
+}
+
+.cta span {
+  font-size: 2.8rem;
+}
+
+.Deal-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.Deal-form h3 {
+  border-bottom: none;
+  margin: 1rem 0;
+}
+
+.Deal-form input {
+  margin: 1rem auto;
+  width: 60vw;
+  box-shadow: 2px 2px 2px 3px #ccc;
+  border: 2px solid #333;
+  padding: .3rem .6rem;
+  font-size: 1.5rem;
+  border-radius: .5rem;
+  transition: 300ms all;
+}
+
+.Deal-form input:focus {
+  width: 58vw;
+}
+
+@media(max-width:950px) {
+  #CandyItem {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #CandyItem p {
+    margin: 1rem 0;
+  }
+
+  #CandyItem .cta {
+    margin: 2rem 0;
+  }
+
+}

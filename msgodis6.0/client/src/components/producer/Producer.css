@@ -1,0 +1,7 @@
+.card-options {
+  padding: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 73vw;
+  margin: 3rem auto;
+}

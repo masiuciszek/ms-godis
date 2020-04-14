@@ -1,0 +1,74 @@
+.Checkout h1,
+h3 {
+  font-family: 'Bangers', cursive;
+  padding: 1rem;
+  letter-spacing: .3rem;
+}
+
+.Checkout h1 {
+  font-size: 4rem;
+}
+
+.Checkout h3 {
+  font-size: 2.5rem;
+}
+
+.Checkout-Cart {
+  box-shadow: 2px 2px 1px 3px #ccc;
+  width: 80vw;
+  margin: 2rem auto;
+  height: 100%;
+  border: 2px solid #333;
+}
+
+.Checkout-Header {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem 0;
+}
+
+.Checkout-Header h4 {
+  width: 33%;
+  padding: .5rem;
+  font-size: 1.7rem;
+}
+
+.CheckoutItem {
+  display: flex;
+  justify-content: space-around;
+}
+
+.CheckoutItem p {
+  width: 33%;
+  padding: .5rem;
+  /* font-size: 1.5rem; */
+  font-size: 2rem;
+}
+
+.CheckoutItem p #decrease,
+#increase {
+  font-weight: 800;
+  cursor: pointer;
+  color: #333;
+  font-size: 2rem;
+
+}
+
+.Checkout-Cart .Checkout-footer {
+  display: flex;
+  justify-content: space-around;
+  padding: .5rem;
+  /* flex-direction: column; */
+}
+
+.Checkout-footer p {
+  margin: 1rem 0 2rem 0;
+  font-size: 2rem;
+  text-align: left;
+  margin: 2.2rem;
+}
+
+.Checkout-Cart .Checkout-footer button {
+  margin: 2.2rem;
+  padding: .4rem;
+}

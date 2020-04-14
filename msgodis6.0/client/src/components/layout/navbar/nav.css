@@ -1,0 +1,163 @@
+.Navbar {
+  padding: 4rem 1.5rem;
+  background: #333;
+  margin-bottom: 2rem;
+}
+
+#navList {
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+#navList li {
+  padding: 0 .5rem;
+}
+
+#navList li a,
+span {
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  color: #fff;
+  cursor: pointer;
+  transition: 300ms ease-in-out;
+  text-decoration: none;
+  padding: .5rem;
+}
+
+
+#navList span:hover {
+  color: #333;
+  background: #fff;
+
+}
+
+#navList a:hover {
+  color: #333;
+  background: #fff;
+}
+
+
+
+.Cart-logo svg,
+small {
+  width: 12rem;
+  position: absolute;
+  left: 0;
+  top: 2rem;
+}
+
+.Cart-logo:hover {
+  background: none !important;
+
+}
+
+small {
+  top: 3rem;
+  left: .3rem;
+  color: #fff;
+}
+
+
+svg {
+  color: #fff;
+}
+
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.DropDownCart {
+  top: 11rem;
+  left: 2rem;
+  background: #fff;
+  border: 2px solid #333;
+  height: 45rem;
+  width: 42rem;
+  position: fixed;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  box-shadow: 1px 2px 3px 3px #ccc;
+
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+
+
+
+.DropDownCart li {
+  font-size: 1.5rem;
+  padding: .5rem;
+  display: flex;
+  justify-content: space-around;
+  margin: 1.5rem 0;
+  text-transform: capitalize;
+}
+
+.DropDownCart li p {
+  align-items: center;
+  display: flex;
+  width: 35%;
+  text-align: center;
+  justify-content: center;
+}
+
+.DropDownCart li p .arrow {
+  color: #333 !important;
+  font-size: 3.5rem !important;
+}
+
+.DropDownCart li p .delete {
+  color: #333 !important;
+  font-size: 2rem !important;
+}
+
+.CartFooter {
+  display: flex;
+  align-items: center;
+  padding: .4rem;
+  margin-top: auto;
+  height: 5.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.CartFooter strong {
+  font-size: 1.6rem;
+  text-align: left;
+}
+
+.CartFooter button {
+  margin-right: .5rem;
+}
