@@ -1,0 +1,10 @@
+.ShowCaseItem {
+  background: #333;
+  color: #fff;
+  max-width: 45vw;
+  margin: 3rem auto;
+  font-size: 2rem;
+  padding: .5rem;
+  box-shadow: 0 8px 6px -6px black;
+
+}
