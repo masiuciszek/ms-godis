@@ -1,0 +1,142 @@
+.OrderShowCase {
+  max-width: 80vw;
+  margin: 6rem auto;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.OrderShowCaseItem {
+  border: 2px solid #333;
+  padding: 1.5rem 1rem;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: 0 8px 6px -6px black;
+}
+
+.OrderShowCaseItem .Order-Header {
+  padding: 2rem 0;
+}
+
+
+#editOption {
+  cursor: pointer;
+  font-size: 2rem;
+  color: #fff;
+  background: #333;
+}
+
+#Delete-Order_Item {
+  cursor: pointer;
+  font-size: 2rem;
+  color: #fff;
+  background: #333;
+}
+
+
+.Order-Header p {
+  color: #333;
+  font-size: 2rem;
+  padding: 1rem;
+
+}
+
+.Order-Body {
+  color: #333;
+  width: 100%;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.Order-Body #decrease,
+#increase {
+  color: #333;
+  position: static;
+  font-size: 2rem;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font-weight: 800;
+  ;
+}
+
+.Order-Body li {
+  color: #333;
+  font-size: 1.8rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+
+.Order-Body li p {
+  width: 40%;
+}
+
+.Order-Body li span {
+  color: #fff;
+  background: #333;
+  font-weight: 800;
+  cursor: none;
+  z-index: 0;
+}
+
+.Order-Footer {
+  padding: 2rem 1rem;
+}
+
+.Order-Footer p {
+  font-size: 2rem;
+}
+
+
+.OrderShowCase .Options-Cta {
+  padding: 2rem;
+}
+
+.OrderShowCase .Options-Cta button {
+  margin: 1rem;
+}
+
+#EditOrderForm {}
+
+#EditOrderForm .form-group {
+  background: #333;
+  box-shadow: 0 8px 6px -6px black;
+  border-radius: 1rem;
+  margin: 1rem 0;
+}
+
+#EditOrderForm .form-group label {
+  color: #fff;
+}
+
+#EditOrderForm .form-group label span {
+  color: #fff;
+}
+
+#EditOrderForm .form-group input {
+  width: 20vw;
+  margin: 0 auto;
+  box-shadow: none;
+}
+
+@media(max-width:900px) {
+  .Order-Body li {
+    flex-direction: column;
+
+  }
+
+  .Order-Body li p {
+    width: 100%;
+    margin: 1rem;
+  }
+}

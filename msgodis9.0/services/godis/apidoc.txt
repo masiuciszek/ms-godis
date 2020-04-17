@@ -1,0 +1,139 @@
+Path: /godisapi/producer
+  usage: Get all by logged in producer
+  method: GET
+  auth: Producer
+  path params: none
+  body params: none
+
+Path: /godisapi/producer
+  usage: Create product by logged in producer
+  method: POST
+  auth: Producer
+  path params: none
+  body params: { name: string, qty: double, price: double }
+
+Path: /godisapi/producer/:id
+  usage: Update product by logged in producer
+  method: PUT
+  auth: Producer
+  path params: id: ProducerID
+  body params: { name?: string, qty?: double, price?: double }
+
+Path: /godisapi/producer/:id
+  usage: Delete product by logged in producer
+  method: Delete
+  auth: Producer
+  path params: id: ProducerID
+  body params: none
+
+Path: /godisapi/consumer
+  usage: Create order by logged in consumer
+  method: POST
+  auth: Consumer 
+  path params: none
+  body params: { products: [{ id: ProductID, qty: double }] }
+
+Path: /godisapi/consumer
+  usage: Get all orders by logged in consumer
+  method: GET
+  auth: Consumer
+  path params: none
+  body params: none
+
+Path: /godisapi/product
+  usage: Get all products
+  method: GET
+  auth: none
+  path params: none
+  body params: none
+
+Path: /godisapi/product/:id
+  usage: Get product by id
+  method: GET
+  auth: none
+  path params: id: ProductID
+  body params: none
+
+Path: /godisapi/product/:id
+  usage: Get products by producer
+  method: GET
+  auth: none
+  path params: id: ProducerID
+  body params: none
+
+Path: /godisapi/admin/consumer
+  usage: Create consumer
+  method: POST
+  auth: Admin
+  path params: none
+  body params: { firstName: string, lastName: string, adress: string }
+
+Path: /godisapi/admin/consumer/:id
+  usage: Update consumer by id
+  method: PUT
+  auth: Admin
+  path params: id: ConsumerID
+  body params: { firstName?: string, lastName?: string, adress?: string }
+
+Path: /godisapi/admin/consumer/:id
+  usage: Delete consumer by id
+  method: DELETE
+  auth: Admin
+  path params: id: ConsumerID
+  body params: none
+
+Path: /godisapi/admin/producer
+  usage: Create producer
+  method: POST
+  auth: Admin
+  path params: none
+  body params: { name: string }
+
+Path: /godisapi/admin/producer/:id
+  usage: Update producer
+  method: PUT
+  auth: Admin
+  path params: id: ProducerID
+  body params: { name?: string }
+
+Path: /godisapi/admin/producer/:id
+  usage: Delete producer
+  method: DELETE
+  auth: Admin
+  path params: id: ProducerID
+  body params: none
+
+Path: /godisapi/admin/product
+  usage: Create product
+  method: POST
+  auth: Admin
+  path params: none
+  body params: { name: string, qty: double, price: double, producer: ProducerID }
+
+Path: /godisapi/admin/product/:id
+  usage: Update product by id
+  method: PUT
+  auth: Admin
+  path params: id: ProductID
+  body params: { name?: string, qty?: double, price?: double, producer?: ProducerID }
+
+Path: /godisapi/admin/product/:id
+  usage: Delete product by id
+  method: DELETE
+  auth: Admin
+  path params: id: ProductID
+  body params: none
+
+Path: /godisapi/admin/order
+  usage: Create order
+  method: POST
+  auth: Admin
+  path params: none
+  body params: { consumer: ConsumerID, products: [{ id: ProductID, qty: double }]}
+
+Path: /godisapi/admin/order/:id
+  usage: Delete order
+  method: DELETE
+  auth: Admin
+  path params: id: OrderID
+  body params: none

@@ -1,0 +1,39 @@
+.Consumer {
+  padding: 3rem 2rem;
+  height: 100%;
+  width: 80vw;
+  margin: 0 auto;
+
+}
+
+.Consumer h1 {
+  font-size: 4rem;
+  padding: 2rem 0;
+}
+
+.Consumer h3 {
+  font-size: 3rem;
+  letter-spacing: .3rem;
+  padding: 4rem 0;
+}
+
+.Consumer a {
+  margin: 1rem auto;
+  text-align: center;
+  padding: .4rem 8rem;
+  display: block;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+@media(max-width: 850px) {
+  .Consumer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}

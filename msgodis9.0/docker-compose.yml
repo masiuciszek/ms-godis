@@ -1,0 +1,72 @@
+version: '3.7'
+services:
+  frontend:
+    build: ./client
+    volumes:
+      - ./client/:/usr/app/
+    command: ["npm", "run", "start"]
+    environment:
+      CI: ${CI}
+
+  proxy:
+    build: ./proxy
+    ports:
+      - 80:80
+    depends_on:
+      - godisapi
+      - authapi
+      - frontend
+
+  godisdb:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: msgodis
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - 3306:3306
+
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+
+  authdb:
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+
+  authapi:
+    build: ./services/auth
+    command: ["npm", "run", "dev"]
+    volumes:
+      - ./services/auth/:/usr/app/
+    depends_on:
+      - authdb
+    environment:
+      DB_HOST: authdb
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+
+  godisapi:
+    build: ./services/godis
+    command: ["npm", "run", "dev"]
+    volumes:
+      - ./services/godis/:/usr/app
+    depends_on:
+      - godisdb
+    environment:
+      TYPEORM_CONNECTION: ${TYPEORM_CONNECTION}
+      TYPEORM_HOST: ${TYPEORM_HOST}
+      TYPEORM_USERNAME: ${DB_USER}
+      TYPEORM_PASSWORD: ${DB_PASSWORD}
+      TYPEORM_DATABASE: ${TYPEORM_DATABASE}
+      TYPEORM_PORT: ${TYPEORM_PORT}
+      TYPEORM_SYNCHRONIZE: ${TYPEORM_SYNCHRONIZE}
+      TYPEORM_LOGGING: ${TYPEORM_LOGGING}
+      TYPEORM_ENTITIES: ${TYPEORM_ENTITIES}
